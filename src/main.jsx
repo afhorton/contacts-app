@@ -19,9 +19,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorPage />,
     loader: rootLoader,
     action: rootAction,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Index /> },
       {
@@ -41,6 +44,8 @@ const router = createBrowserRouter([
         action: destroyAction,
         errorElement: <div>Oops! There was an error</div>,
       },
+    ],
+  },
     ],
   },
 ]);
